@@ -1,0 +1,438 @@
+:root {
+
+    --primary-color: #1D9BF0;
+    --secondary-color: rgb(41, 38, 38);
+
+}
+
+* {
+
+    padding: 0;
+    margin: 0;
+
+}
+
+body {
+
+    background-color: black;
+    font-family: 'Roboto', sans-serif;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.wrapper {
+
+    max-width: 1300px;
+    display: flex;
+
+
+}
+
+.menu {
+
+    max-width: 300px;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 60px;
+    height: 100vh;
+
+
+}
+
+.menu ul {
+
+    list-style: none;
+
+}
+
+.menu li {
+
+    padding: 10px 0;
+    margin: 10px 0px;
+    text-align: center;
+    border-radius: 100%;
+    cursor: pointer;
+
+}
+
+.menu li:hover,
+.profile:hover {
+
+    background-color: var(--secondary-color);
+
+}
+
+.twitter-icon {
+
+    font-size: 30px;
+}
+
+.new-post {
+
+    background-color: var(--primary-color);
+    padding: 10px;
+    width: 48px;
+    border-radius: 100%;
+
+}
+
+.menu .new-post:hover {
+
+    background-color: var(--primary-color);
+
+}
+
+.profile {
+
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 100%;
+    cursor: pointer;
+
+
+}
+
+
+
+
+
+
+
+
+
+.wall {
+
+    min-width: 600px;
+    width: 60%;
+    min-height: 100vh;
+    border-left: 1px solid rgba(151, 151, 151, 0.5);
+    border-right: 1px solid rgba(151, 151, 151, 0.5);
+    margin-left: 20px;
+
+
+}
+
+.top-bar {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.top-bar i {
+
+    display: block;
+    font-size: 16px;
+    line-height: 24px;
+    width: 24px;
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+    
+
+}
+.top-bar i:hover{
+
+    background-color: #1D9BF0;
+
+}
+
+.add-post {
+
+    display: flex;
+    color: white;
+    margin-top: 20px;
+
+}
+
+.add-post-left i {
+
+    margin-left: 20px;
+    font-size: 40px;
+
+}
+
+.add-post-right {
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+
+}
+
+.add-post-right select {
+
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    color: var(--primary-color);
+    padding: 5px 15px;
+    display: block;
+    width: max-content;
+    cursor: pointer;
+
+}
+
+.add-post-right textarea {
+    background-color: transparent;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    font-size: 24px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.add-post-right textarea:focus {
+
+    outline: none;
+    border-color: var(--primary-color);
+
+}
+
+.add-post-right .add-post-select-repley {
+
+    border: 0;
+    user-select: none;
+    appearance: none;
+    width: fit-content;
+    outline: none;
+    padding-bottom: 10px;
+    border-radius: 0;
+    width: 100%;
+    border-bottom: 2px solid rgb(100, 100, 100);
+
+}
+
+.bot-bar {
+
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.add-post-media i {
+
+    font-size: 16px;
+    padding: 5px 10px;
+    width: max-content;
+    margin: 0 2px;
+    color: var(--primary-color);
+
+}
+
+.add-post-media i:hover {
+
+    background-color: rgb(40, 40, 40);
+
+}
+
+.add-post-right button {
+
+    padding: 10px 15px;
+    background-color: #1D9BF0;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.rightbar {
+
+    max-width: 400px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+
+}
+
+.search {
+
+    width: 300px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: white;
+    background-color: rgb(40, 40, 40);
+    border: none;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    border: 1px solid rgb(40, 40, 40);
+}
+
+.search--input:focus  {
+
+    outline: none;
+ 
+}
+
+
+
+.search--input {
+
+    display: block;
+    width: 100%;
+    padding: 15px 15px;
+    margin-left: 10px;
+    background-color: transparent;
+    border: none;
+    color:  white;
+
+}
+
+.search.active {
+
+    background-color: black;
+    border-color: #1D9BF0;
+    color: #1D9BF0;
+
+}
+
+.trends, .follow-recomendation {
+
+    background-color: rgb(40, 40, 40);
+    margin-top: 40px;
+    width: 340px;
+    border-radius: 15px;
+    color: rgb(216, 215, 215);
+}
+
+.trends ul, .follow-recomendation ul {
+
+    list-style: none;
+
+}
+
+.trends h2, .follow-recomendation h2 {
+
+    font-weight: 400;
+    margin: 20px 0 20px;
+    padding: 0 20px;
+    font-size: 18px;
+
+}
+
+.trends li, .follow-recomendation li {
+
+    margin: 15px 0;
+    padding: 5px 20px;
+    position: relative;
+    cursor: pointer;
+
+}
+
+.trends li:hover, .follow-recomendation li:hover{
+
+    background-color: rgb(60, 60, 60);
+
+}
+
+.trends span {
+
+    display: block;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: rgb(131, 131, 131);
+
+}
+
+.trends p {
+
+    font-weight: bold;
+
+}
+
+.trends li i {
+
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    color: rgb(100, 100, 100);
+    padding: 5px;
+    border-radius: 100%;
+    cursor: pointer;
+
+}
+
+.trends li i:hover {
+
+    background-color: rgba(58, 120, 179, 0.5);
+    color: var(--primary-color);
+
+}
+
+.showmore {
+
+    display: block;
+    color: #1D9BF0;
+    font-size: 14px;
+    padding: 20px 0 ;
+
+}
+
+.follow-recomendation li {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    
+
+}
+
+.follow-recomendation i {
+
+    font-size: 40px;
+    display: inline-block;
+
+    
+}
+
+.follow-recomendation p {
+
+   
+display: inline-block;
+margin-left: 10px;
+
+}
+
+.follow-recomendation button {
+
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: none;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+
+

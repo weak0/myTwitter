@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/27ada91c35.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Roboto&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <title>myTwitter</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="menu">
+            <ul>
+                <li class="twitter-icon"> <i class="fa-brands fa-twitter"></i> </li>
+                <li><i class="fa-solid fa-house"></i></li>
+                <li><i class="fa-solid fa-magnifying-glass"></i></li>
+                <li><i class="fa-solid fa-bell"></i></li>
+                <li><i class="fa-regular fa-envelope"></i></li>
+                <li><i class="fa-solid fa-bookmark"></i></li>
+                <li><i class="fa-solid fa-table-list"></i></li>
+                <li><i class="fa-solid fa-user"></i></li>
+                <li><i class="fa-solid fa-comment-dots"></i></li>
+                <li class="new-post"><i class="fa-regular fa-pen-to-square"></i></li>
+            </ul>
+            <i class="profile fa-solid fa-circle-user"></i>
+
+
+        </nav>
+        <main class="wall">
+
+            <div class="top-bar">
+                <h2>Home</h2> <i class="fa-solid fa-sort"></i>
+            </div>
+            <div class="add-post">
+                <div class="add-post-left"><i class="profile fa-solid fa-circle-user"></i>
+                </div>
+                <div class="add-post-right">
+                    <select id="add-post-select" class="add-post-select">
+                        <option value="All">Everyone</option>
+                        <option value="Circle">Group</option>
+                    </select>
+                    <textarea name="add-post-textarea" id="text-area" cols="30" rows="10"
+                        placeholder="ale mam dzisiaj esse"></textarea>
+
+                    <select id="add-post-select-repley" class="add-post-select-repley">
+                        <option value="All">Everyone can repley</option>
+                        <option value="Folowers">People you follow</option>
+                        <option value="Mention">Only people you mention</option>
+                    </select>
+                    <div class="bot-bar">
+                        <div class="add-post-media">
+                            <i class="fa-solid fa-file-image"></i>
+                            <i class="fa-solid fa-bars-progress"></i>
+                            <i class="fa-solid fa-face-smile"></i>
+                        </div>
+                            <button>Tweet</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+        <aside class="rightbar">
+            <div class="search"> <i class="fa-solid fa-magnifying-glass"></i> <input type="text" class="search--input"
+                    placeholder="Search myTwitter"></div>
+
+            <div class="trends">
+                <h2>Trends for you</h2>
+                <ul>
+                    <li>
+                        <span>Trending in Poland</span>
+                        <p>TVPiS</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </li>
+                    <li>
+                        <span>Trending in Poland</span>
+                        <p>TVPiS</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </li>
+                    <li>
+                        <span>Trending in Poland</span>
+                        <p>TVPiS</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </li>
+                    <li>
+                        <span>Trending in Poland</span>
+                        <p>TVPiS</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </li>
+                    <li>
+                        <span>Trending in Poland</span>
+                        <p>TVPiS</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </li>
+                    <li>
+                        <span>Trending in Poland</span>
+                        <p>TVPiS</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </li>
+                    <li>
+                        <span>Trending in Poland</span>
+                        <p>TVPiS</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </li>
+                    <li>
+                        <span>Trending in Poland</span>
+                        <p>TVPiS</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </li>
+                    <li>
+                        <span>Trending in Poland</span>
+                        <p>TVPiS</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </li>
+                    <li class="showmore"> Show more</li>
+
+                </ul>
+            </div>
+            <div class="follow-recomendation">
+                <h2>Who to follow</h2>
+                <ul>
+                    <li>
+                        <div><i class="profile fa-solid fa-circle-user"></i>
+                            <p>Nazwa</p>
+                        </div> <button>Follow</button>
+                    </li>
+                    <li>
+                        <div><i class="profile fa-solid fa-circle-user"></i>
+                            <p>Nazwa</p>
+                        </div> <button>Follow</button>
+                    </li>
+                    <li>
+                        <div><i class="profile fa-solid fa-circle-user"></i>
+                            <p>Nazwa</p>
+                        </div> <button>Follow</button>
+                    </li>
+                    <li class="showmore"> Show more</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+</body>
+
+</html>
