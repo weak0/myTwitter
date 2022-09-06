@@ -115,7 +115,6 @@ body {
 
     min-width: 600px;
     width: 60%;
-    min-height: 100vh;
     border-left: 1px solid rgba(151, 151, 151, 0.5);
     border-right: 1px solid rgba(151, 151, 151, 0.5);
     margin-left: 20px;
@@ -230,6 +229,11 @@ body {
 
 }
 
+input[type='file']{
+
+    display: none;
+}
+
 .add-post-media i {
 
     font-size: 16px;
@@ -276,9 +280,12 @@ body {
     font-size: 40px;
 
 }
-.post-left i {
+.post-left img {
 
-    font-size: 40px;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    margin: 5px 8px;
 }
 
 .post-right {
@@ -519,6 +526,13 @@ margin-left: 10px;
     color: black;
     font-weight: bold;
     cursor: pointer;
+
+}
+
+.post-place {
+
+    color: white;
+    width: 100%;
 
 }
 
