@@ -8,9 +8,7 @@ class Main {
     emotes = new EmojiPicker('.fa-face-smile', '#text-area')
 
     init() {
-
         posts.loadWall();
-
     }
 
 }

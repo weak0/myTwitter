@@ -131,16 +131,6 @@ const emote = e.target.textContent;
 this.input.value += emote
 
 
-}
-
-
-
-
-
-
-
-
-
-}
+}}
 
 
