@@ -2,6 +2,10 @@ import {
     people
 } from "./People.js";
 
+import {
+    db
+} from './postDatabase.js'
+
 
 
 
@@ -20,52 +24,10 @@ class Posts {
 
     }
 
-    allPosts = [{
-            id: 2,
-            authorID: 99,
-            text: 'Alina Lempa halemba',
-            date: 1662542267522,
-            coments: 1,
-            retwets: 10,
-            hearts: 29,
-            shares: 5,
-            liked: false,
 
 
-        },
-        {
-
-            id: 1,
-            authorID: 3,
-            text: 'Alina Lempa prezes Organizacji Firm Badania Opinii i Rynku. Nowymi członkami zarządu OFBOR zostali także: Agnieszka Gosiewska (Nielsen), Szymon Mordasiewicz (GfK), Łukasz Mazurkiewicz (ARC Rynek i Opinia), Michał Prządka (Kantar Polska) oraz Tomasz Woźniczka (PBS)',
-            media: 'https://pbs.twimg.com/media/Fb5EaUDWYAEUlec?format=jpg&name=medium',
-            date: 1662362267522,
-            coments: 12,
-            retwets: 10,
-            hearts: 294,
-            shares: 15,
-            liked: false,
-
-        },
-
-        {
-
-            id: 0,
-            authorID: 3,
-            text: 'Alina Lempa prezes Organizacji Firm Badania Opinii i Rynku. Nowymi członkami zarządu OFBOR zostali także: Agnieszka Gosiewska (Nielsen), Szymon Mordasiewicz (GfK), Łukasz Mazurkiewicz (ARC Rynek i Opinia), Michał Prządka (Kantar Polska) oraz Tomasz Woźniczka (PBS)',
-            date: 1652562237522,
-            coments: 12,
-            retwets: 10,
-            hearts: 24,
-            shares: 15,
-            liked: false,
-
-        },
-
-    ]
-
-    id = this.allPosts.length - 1
-    sortedByActiviti = false
+    id = db.length - 1
+    sortedByDate = false
 
 
 
@@ -92,7 +54,7 @@ class Posts {
 
         this.HTMLElements.wall.textContent = "";
 
-        this.allPosts.forEach(obj => {
+        db.forEach(obj => {
 
             const author = people.findPerson(obj.authorID)
             const postDiv = document.createElement('div')
@@ -116,11 +78,11 @@ class Posts {
                
                 <div class="post-actions">
                     <div ><i class="fa-solid fa-comment"></i> ${obj.coments}</div>
-                    <div ><i class="fa-solid fa-retweet"></i> ${obj.retwets}</div>
+                    <div ><i class="fa-solid fa-retweet"></i></div>
 
                     <div data-like><i class="fa-solid fa-heart ${obj.liked ? 'red': ''}"></i> ${obj.hearts}</div>
 
-                    <div ><i class="fa-solid fa-share"></i> ${obj.shares}</div>
+                    <div ><i class="fa-solid fa-share"></i></div>
                 </div>`
 
 
@@ -178,16 +140,14 @@ class Posts {
                         media: media,
                         date: date.getTime(),
                         coments: 0,
-                        retwets: 0,
                         hearts: 0,
-                        shares: 0,
                         liked: false
 
 
 
                     }
 
-                    this.allPosts.unshift(obj)
+                    db.unshift(obj)
                     this.loadWall()
                 })
 
@@ -201,14 +161,12 @@ class Posts {
                     text: text,
                     date: date.getTime(),
                     coments: 0,
-                    retwets: 0,
                     hearts: 0,
-                    shares: 0,
                     liked: false
 
                 }
 
-                this.allPosts.unshift(obj)
+                db.unshift(obj)
                 this.loadWall()
 
             }
@@ -218,19 +176,19 @@ class Posts {
     likePost(e) {
 
         const postID = e.target.closest('div.post').id * 1;
-        const index = this.allPosts.findIndex(obj => obj.id === postID)
+        const index = db.findIndex(obj => obj.id === postID)
 
-        if (this.allPosts[index].liked === false) {
+        if (db[index].liked === false) {
 
-            this.allPosts[index].liked = true
-            this.allPosts[index].hearts++
-            e.target.closest('div').innerHTML = `<i class="fa-solid fa-heart red"></i> ${this.allPosts[index].hearts}`
+            db[index].liked = true
+            db[index].hearts++
+            e.target.closest('div').innerHTML = `<i class="fa-solid fa-heart red"></i> ${db[index].hearts}`
 
         } else {
 
-            this.allPosts[index].liked = false
-            this.allPosts[index].hearts--
-            e.target.closest('div').innerHTML = `<i class="fa-solid fa-heart"></i> ${this.allPosts[index].hearts}`
+            db[index].liked = false
+            db[index].hearts--
+            e.target.closest('div').innerHTML = `<i class="fa-solid fa-heart"></i> ${db[index].hearts}`
 
         }
 
@@ -239,22 +197,22 @@ class Posts {
 
     sortElements() {
 
-        if (!this.sortedByActiviti) {
+        if (this.sortedByDate) {
 
-            this.sortedByActiviti = true;
+            this.sortedByDate = true;
 
-        this.allPosts.sort((a, b) => {
+        db.sort((a, b) => {
 
-            return (b.hearts + b.coments + b.retwets + b.shares) - (a.hearts + a.coments + a.retwets + a.shares)
+            return (b.hearts + b.coments) - (a.hearts + a.coments)
         })
 
-    } else if(this.sortedByActiviti) {
+    } else if(!this.sortedByDate) {
 
 
-        this.sortedByActiviti = false;
+        this.sortedByDate = false;
 
 
-        this.allPosts.sort((a, b) => {
+        db.sort((a, b) => {
 
          return   b.date - a.date
             
