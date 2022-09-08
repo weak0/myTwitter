@@ -1,83 +1,64 @@
 export class EmojiPicker {
 
-emojiTab = ['😀','😆','🤣','😉','😛','🤑','😪']
-emojisBtns = null
+  emojiTab = ['😀', '😆', '🤣', '😉', '😛', '🤑', '😪']
+  emojisBtns = null
 
 
-constructor(btn, input) {
+  constructor(btn, input) {
 
     this.btn = document.querySelector(btn)
     this.input = document.querySelector(input)
     this.init()
-    
 
-}
+  }
 
 
   init() {
 
+    this.btn.addEventListener('click', () => this.openPicker())
+    document.addEventListener('click', (e) => this.closePicker(e))
 
-
-
-
-    this.btn.addEventListener( 'click', () => this.openPicker())
-    document.addEventListener('click' , (e) => this.closePicker(e))
-    
-
-
-  }  
+  }
 
 
   closePicker(e) {
 
     const picker = document.querySelector('#emotePicker')
-  
-    if(picker !== null && !e.target.classList.contains('emoji') && e.target !== this.btn  ) {
 
-        picker.remove()
-        
+    if (picker !== null && !e.target.classList.contains('emoji') && e.target !== this.btn) {
+
+      picker.remove()
+
     }
-
 
   }
 
   addListeners() {
 
-    
     this.emojisBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => this.addEmote(e))
+      btn.addEventListener('click', (e) => this.addEmote(e))
     })
-
- 
-
-    
-
 
   }
 
-
   openPicker() {
-
 
     const picker = document.querySelector('#emotePicker')
 
-    if(  picker === null) {
+    if (picker === null) {
 
-    const div = document.createElement('div')
-    div.id = 'emotePicker'
-    this.stylePicker(div);
-    this.generateEmoji(div);
+      const div = document.createElement('div')
+      div.id = 'emotePicker'
+      this.stylePicker(div);
+      this.generateEmoji(div);
+      this.btn.parentElement.appendChild(div)
+      this.emojisBtns = document.querySelectorAll('.emoji')
+      this.addListeners()
 
+    } else {
 
-    const parentNode = this.btn.parentElement
-    parentNode.appendChild(div)
-    this.emojisBtns = document.querySelectorAll('.emoji')
-    this.addListeners()
+      picker.remove()
 
-    }else {
-
-        picker.remove()
-        
 
     }
 
@@ -95,7 +76,7 @@ constructor(btn, input) {
     div.style.top = `${Y}px `
     div.style.left = `${X}px`
     div.style.width = '170px'
-    div.style.border ='2px solid'
+    div.style.border = '2px solid'
     div.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color')
     div.style.borderRadius = '20px'
     div.style.display = 'flex'
@@ -107,30 +88,29 @@ constructor(btn, input) {
 
   }
 
-generateEmoji(div) {
+  generateEmoji(div) {
 
 
-   this.emojiTab.forEach( emote => {
+    this.emojiTab.forEach(emote => {
 
-    const emoteDiv = document.createElement('div')
-    emoteDiv.setAttribute('class', 'emoji')
-    emoteDiv.textContent = emote
-    emoteDiv.style.margin = '10px'
-    emoteDiv.style.cursor = 'pointer'
-    div.appendChild(emoteDiv)
+      const emoteDiv = document.createElement('div')
+      emoteDiv.setAttribute('class', 'emoji')
+      emoteDiv.textContent = emote
+      emoteDiv.style.margin = '10px'
+      emoteDiv.style.cursor = 'pointer'
+      div.appendChild(emoteDiv)
 
 
-   })
+    })
 
+  }
+
+
+  addEmote = (e) => {
+
+    const emote = e.target.textContent;
+    this.input.value += emote
+
+
+  }
 }
-
-
-addEmote = (e) => {
-
-const emote = e.target.textContent;
-this.input.value += emote
-
-
-}}
-
-

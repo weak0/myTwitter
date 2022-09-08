@@ -6,23 +6,16 @@ import {
     db
 } from './postDatabase.js'
 
+import {
+    HTMLElements
+} from '../main.js'
+import { user } from "./User.js";
 
 
 
-class Posts {
+class Wall {
 
-    HTMLElements = {
 
-        wall: document.querySelector('[data-wall]'),
-        tweetButton: document.querySelector('[data-tweet]'),
-        textarea: document.querySelector('#text-area'),
-        currentLetter: document.querySelector('[data-current-letter]'),
-        limitLetter: document.querySelector('[data-limit-letter]'),
-        inputFile: document.querySelector('#input-file'),
-        like: document.querySelector('[data-like]'),
-        sortElementsBtn: document.querySelector('.fa-sort')
-
-    }
 
 
 
@@ -34,16 +27,16 @@ class Posts {
     constructor() {
 
         this.letterLimit = 250;
-        this.init()
 
     }
 
     init() {
 
 
-        this.HTMLElements.textarea.addEventListener('keyup', () => this.letterCounter())
-        this.HTMLElements.tweetButton.addEventListener('click', () => this.newPost())
-        this.HTMLElements.sortElementsBtn.addEventListener('click', () => this.sortElements())
+        HTMLElements.textarea.addEventListener('keyup', () => this.letterCounter())
+        HTMLElements.tweetButton.addEventListener('click', () => this.newPost())
+        HTMLElements.sortElementsBtn.addEventListener('click', () => this.sortElements())
+        this.sortElements();
 
 
     }
@@ -52,7 +45,7 @@ class Posts {
 
     loadWall() {
 
-        this.HTMLElements.wall.textContent = "";
+        HTMLElements.wall.textContent = "";
 
         db.forEach(obj => {
 
@@ -86,7 +79,7 @@ class Posts {
                 </div>`
 
 
-            this.HTMLElements.wall.appendChild(postDiv);
+            HTMLElements.wall.appendChild(postDiv);
             postDiv.appendChild(postLeft);
             postDiv.appendChild(postRight);
             postDiv.querySelector('[data-like]').addEventListener('click', (e) => this.likePost(e));
@@ -99,17 +92,17 @@ class Posts {
 
     letterCounter() {
 
-        const currentLetter = this.HTMLElements.textarea.value.length;
-        this.HTMLElements.currentLetter.textContent = currentLetter;
+        const currentLetter = HTMLElements.textarea.value.length;
+        HTMLElements.currentLetter.textContent = currentLetter;
 
 
         if (currentLetter >= this.letterLimit) {
 
-            this.HTMLElements.limitLetter.parentNode.classList.add('red')
+            HTMLElements.limitLetter.parentNode.classList.add('red')
 
         } else {
 
-            this.HTMLElements.limitLetter.parentNode.classList.remove('red')
+            HTMLElements.limitLetter.parentNode.classList.remove('red')
         }
 
 
@@ -118,16 +111,17 @@ class Posts {
 
     newPost() {
 
-        if (this.HTMLElements.textarea.value.length > 0 && this.HTMLElements.textarea.value.length < 250) {
+        if (HTMLElements.textarea.value.length > 0 && HTMLElements.textarea.value.length < 250) {
 
 
             const date = new Date()
             this.id++
             const id = this.id
-            const text = this.HTMLElements.textarea.value
+            const text = HTMLElements.textarea.value
 
             const reader = new FileReader()
-            if (this.HTMLElements.inputFile.value !== "") {
+
+            if (HTMLElements.inputFile.value !== "") {
 
                 reader.addEventListener(('load'), () => {
 
@@ -135,7 +129,7 @@ class Posts {
                     const obj = {
 
                         id: id,
-                        authorID: 99,
+                        authorID: user.userDb.id,
                         text: text,
                         media: media,
                         date: date.getTime(),
@@ -151,13 +145,13 @@ class Posts {
                     this.loadWall()
                 })
 
-                reader.readAsDataURL(this.HTMLElements.inputFile.files[0])
+                reader.readAsDataURL(HTMLElements.inputFile.files[0])
             } else {
 
                 const obj = {
 
                     id: id,
-                    authorID: 99,
+                    authorID: user.userDb.id,
                     text: text,
                     date: date.getTime(),
                     coments: 0,
@@ -199,27 +193,20 @@ class Posts {
 
         if (this.sortedByDate) {
 
+            this.sortedByDate = false;
+            db.sort((a, b) => {
+                return (b.hearts + b.coments) - (a.hearts + a.coments)
+            })
+
+        } else if (!this.sortedByDate) {
+
             this.sortedByDate = true;
-
-        db.sort((a, b) => {
-
-            return (b.hearts + b.coments) - (a.hearts + a.coments)
-        })
-
-    } else if(!this.sortedByDate) {
+            db.sort((a, b) => {
+                return b.date - a.date
+            })
 
 
-        this.sortedByDate = false;
-
-
-        db.sort((a, b) => {
-
-         return   b.date - a.date
-            
-        })
-
-
-    }
+        }
 
 
         this.loadWall()
@@ -238,32 +225,32 @@ class Posts {
         let convertToDays = (currentTime - date) / 1000 / 60 / 60 / 24
         let convertToYears = (currentTime - date) / 1000 / 60 / 60 / 365
 
-        if (convertToYears > 1) {
+        if (convertToYears >= 1) {
 
             convertToYears = "dodano " + Math.floor(convertToYears) + " lat temu"
             return convertToYears
 
-        } else if (convertToDays > 1) {
+        } else if (convertToDays >= 1) {
 
             convertToDays = "dodano " + Math.floor(convertToDays) + " dni temu"
             return convertToDays
 
-        } else if (convertToHours > 1) {
+        } else if (convertToHours >= 1) {
 
             convertToHours = "dodano " + Math.floor(convertToHours) + " godzin temu"
             return convertToHours
 
-        } else if (convertToMinutes > 1) {
+        } else if (convertToMinutes >= 1) {
 
             convertToMinutes = "dodano " + Math.floor(convertToMinutes) + " minut temu"
             return convertToMinutes
 
-        } else if (convertToSeconds > 1) {
+        } else if (convertToSeconds >= 1) {
 
             convertToSeconds = "dodano " + Math.floor(convertToSeconds) + " sekund temu"
             return convertToSeconds
 
-        }   else {
+        } else {
 
             const now = 'teraz'
             return now
@@ -279,4 +266,4 @@ class Posts {
 }
 
 
-export const posts = new Posts()
+export const wall = new Wall()

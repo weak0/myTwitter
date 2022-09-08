@@ -1,3 +1,6 @@
+import { user } from './User.js'
+
+
 class People {
 
     peopleArr = [{
@@ -67,13 +70,8 @@ class People {
             nick: 'Marcin Najman',
             img: 'https://pbs.twimg.com/profile_images/1532384766405877761/SbD9Zzy3_400x400.jpg'
         },
-        {
-            id: 99,
-            name: 'Maciek Gorzela',
-            nick: 'Still Weeak',
-            img: 'https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg',
 
-        }
+        user.userDb
 
     ]
 

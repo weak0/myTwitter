@@ -8,6 +8,8 @@ export const db = [
         coments: 15,
         hearts: 73,
         liked: false,
+        language: 'English',
+        category: 'comedy'
     },
     {
         id: 9,
@@ -18,6 +20,8 @@ export const db = [
         coments: 1530,
         hearts: 7383,
         liked: false,
+        language: 'English',
+        category: 'technology'
     },
     {
         id: 8,
@@ -27,6 +31,8 @@ export const db = [
         coments: 15,
         hearts: 73,
         liked: false,
+        language: 'Poland',
+        category: 'influencer'
 
 
     },
@@ -38,6 +44,8 @@ export const db = [
         coments: 67,
         hearts: 1953,
         liked: false,
+        language: 'English',
+        category: 'technology'
 
 
     },
@@ -49,6 +57,8 @@ export const db = [
         coments: 0,
         hearts: 353,
         liked: false,
+        language: 'Poland',
+        category: 'chess'
 
 
     },
@@ -60,6 +70,8 @@ export const db = [
         coments: 39,
         hearts: 1523,
         liked: false,
+        language: 'Poland',
+        category: 'comedy'
 
 
     },
@@ -72,6 +84,8 @@ export const db = [
         coments: 339,
         hearts: 1923,
         liked: false,
+        language: 'Poland',
+        category: 'animals'
 
 
     },
@@ -84,6 +98,8 @@ export const db = [
         coments: 4,
         hearts: 106,
         liked: false,
+        language: 'Poland',
+        category: 'influencer'
 
 
     },
@@ -95,6 +111,8 @@ export const db = [
         coments: 1,
         hearts: 29,
         liked: false,
+        language: 'Poland',
+        category: 'no-category'
 
 
     },
@@ -108,6 +126,8 @@ export const db = [
         coments: 2,
         hearts: 244,
         liked: false,
+        language: 'English',
+        category: 'chess'
 
     },
 
@@ -121,6 +141,8 @@ export const db = [
         coments: 12,
         hearts: 24,
         liked: false,
+        language: 'Poland',
+        category: 'cinema'
 
     },
 
