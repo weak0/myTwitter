@@ -1,6 +1,7 @@
 import {wall} from './scripts/Wall.js'
 import {EmojiPicker} from './scripts/EmojiPicker.js'
 import { trending } from './scripts/Trending.js'
+import { user } from './scripts/User.js'
 
 
 export const HTMLElements = {
@@ -17,6 +18,7 @@ export const HTMLElements = {
     textAreaSelector:'#text-area',
     trendsSection:document.querySelector('.trends ul'),
     showMoreTrendsBtn: document.querySelector('[data-more-trends]'),
+    liTrendsSelector: '.li-trends'
 
 }
 
@@ -30,6 +32,8 @@ class Main {
     init() {
         wall.init();
         trending.init()
+        user.getWhoToFollow()
+
     }
 
 }

@@ -494,7 +494,7 @@ input[type='file']{
 
 }
 
-.trends .showmore {
+.trends .showmore, .follow-recomendation .showmore {
 
     display: block;
     color: #1D9BF0;

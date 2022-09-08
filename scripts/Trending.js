@@ -4,6 +4,7 @@ import {
 import {
     HTMLElements
 } from '../main.js'
+import { wall } from './Wall.js'
 
 class Trending {
 
@@ -82,11 +83,10 @@ class Trending {
 
         })
 
-        console.log();
-
         tempArr.forEach(obj => {
 
             const li = document.createElement('li')
+            li.classList.add('li-trends')
             const span = document.createElement('span')
             const p = document.createElement('p')
             span.textContent = obj.origin;
@@ -95,6 +95,7 @@ class Trending {
             li.innerHTML = '<i class="fa-solid fa-ellipsis"></i>'
             li.appendChild(span)
             li.appendChild(p)
+            li.addEventListener('click' , () => wall.loadCategory(obj.category) )
 
         })
 

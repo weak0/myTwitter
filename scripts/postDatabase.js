@@ -56,7 +56,7 @@ export const db = [
         date: 1662548267522,
         coments: 0,
         hearts: 353,
-        liked: false,
+        liked: true,
         language: 'Poland',
         category: 'chess'
 
@@ -69,7 +69,7 @@ export const db = [
         date: 1662392297522,
         coments: 39,
         hearts: 1523,
-        liked: false,
+        liked: true,
         language: 'Poland',
         category: 'comedy'
 
