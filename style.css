@@ -515,10 +515,18 @@ input[type='file']{
 
 }
 
-.follow-recomendation i {
+.follow-recomendation div {
 
-    font-size: 40px;
-    display: inline-block;
+    flex-grow: 1;
+    position: relative;
+
+}
+
+.follow-recomendation img {
+
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
 
     
 }
@@ -526,8 +534,14 @@ input[type='file']{
 .follow-recomendation p {
 
    
-display: inline-block;
-margin-left: 10px;
+display: inline-block;    
+position: absolute;
+top:50%;
+transform: translateY(-50%);
+left: 30%
+
+
+
 
 }
 
@@ -562,4 +576,6 @@ color:red;
 
 
 }
+
+
 

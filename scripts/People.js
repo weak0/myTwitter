@@ -189,6 +189,13 @@ class People {
 
     }
 
+    addToDb(id) {
+
+
+        console.log(id);
+
+    }
+
 }
 
 export const people = new People()

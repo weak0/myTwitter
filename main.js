@@ -18,7 +18,10 @@ export const HTMLElements = {
     textAreaSelector:'#text-area',
     trendsSection:document.querySelector('.trends ul'),
     showMoreTrendsBtn: document.querySelector('[data-more-trends]'),
-    liTrendsSelector: '.li-trends'
+    liTrendsSelector: '.li-trends',
+    ulFollowrecomendation: document.querySelector('.follow-recomendation ul'),
+    showmoreFollowrecomendation: document.querySelector('.follow-recomendation .showmore'),
+
 
 }
 
@@ -33,6 +36,8 @@ class Main {
         wall.init();
         trending.init()
         user.getWhoToFollow()
+        HTMLElements.showmoreFollowrecomendation.addEventListener('click' , () => user.moreRecomedation())
+
 
     }
 

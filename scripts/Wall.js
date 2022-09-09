@@ -179,6 +179,7 @@ class Wall {
             e.target.closest('div').innerHTML = `<i class="fa-solid fa-heart red"></i> ${db[index].hearts}`
 
             user.interestedAdd(db[index].category)
+            user.getWhoToFollow()
 
         } else {
 
@@ -186,6 +187,7 @@ class Wall {
             db[index].hearts--
             e.target.closest('div').innerHTML = `<i class="fa-solid fa-heart"></i> ${db[index].hearts}`
             user.interestedRemove(db[index].category)
+            user.getWhoToFollow()
 
         }
 
