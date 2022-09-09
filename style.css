@@ -577,5 +577,12 @@ color:red;
 
 }
 
+ .follow-recomendation .folowed {
+
+    background-color: var(--primary-color);
+    color: white;
+
+}
+
 
 

@@ -142,7 +142,7 @@ export const db = [
         hearts: 24,
         liked: false,
         language: 'Poland',
-        category: 'cinema'
+        category: 'marketing'
 
     },
 

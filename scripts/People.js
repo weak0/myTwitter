@@ -1,4 +1,12 @@
-import { user } from './User.js'
+import {
+    db
+} from './postDatabase.js'
+import {
+    user
+} from './User.js'
+import {
+    wall
+} from './Wall.js'
 
 
 class People {
@@ -9,7 +17,7 @@ class People {
             nick: 'MarketingPrzyKawie',
             img: 'https://pbs.twimg.com/profile_images/887703492554625025/6jgYHqT8_400x400.jpg',
             interested: ['marketing']
-            
+
         },
         {
             id: 9,
@@ -23,7 +31,7 @@ class People {
             name: 'nieANTYfan',
             nick: 'nieantyfan',
             img: 'https://pbs.twimg.com/profile_images/1518659050946314242/ATkgmEX3_400x400.jpg',
-            interested: ['influencer' , 'technology']
+            interested: ['influencer', 'technology']
         },
         {
             id: 7,
@@ -164,15 +172,15 @@ class People {
                 authorID: 15,
                 text: "Piątek, piąteczek, piątunio. Do tego wakacyjny piątek, piąteczek, piątunio. A ja Was dawno nie pytałem – co Wam się udało zrobić w tym tygodniu?",
                 date: 1661432237822,
-                media:'https://pbs.twimg.com/media/FXs47dLUIAE03lm?format=jpg&name=medium',
+                media: 'https://pbs.twimg.com/media/FXs47dLUIAE03lm?format=jpg&name=medium',
                 coments: 6,
                 hearts: 10,
                 liked: false,
                 language: 'English',
-                category: 'chess'
+                category: 'marketing'
             },
         },
-        
+
 
 
 
@@ -189,10 +197,46 @@ class People {
 
     }
 
-    addToDb(id) {
+    addToDb(e, id) {
 
+        const index = this.unfolowedPeople.findIndex(obj => obj.id === id)
+        const objPerson = this.unfolowedPeople[index]
 
-        console.log(id);
+        const newPerson = {
+
+            id: objPerson.id,
+            name: objPerson.name,
+            nick: objPerson.nick,
+            img: objPerson.img,
+            interested: objPerson.interested,
+
+        }
+
+        if (e.target.textContent === 'Follow') {
+
+            e.target.classList.add('folowed')
+            e.target.textContent = 'Unfollow'
+            this.peopleArr.push(newPerson);
+            db.unshift(objPerson.posts)
+            wall.loadWall();
+        } 
+        else {
+
+            e.target.classList.remove('folowed')
+            e.target.textContent = 'Follow'
+
+            const index2 =this.peopleArr.findIndex(obj => obj === newPerson)
+            this.peopleArr.splice(index2 , 1)
+
+            const index3 = db.findIndex( obj => obj === objPerson.posts)
+            db.splice(index3, 1)
+
+            console.log(index);
+            wall.loadWall()
+            
+
+        }
+
 
     }
 

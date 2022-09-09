@@ -22,6 +22,7 @@ class User {
   interestedAdd(category) {
 
     this.userDb.interested.push(category)
+    console.log(this.userDb.interested)
 
   }
 
@@ -44,13 +45,15 @@ class User {
         }
       })
 
-      if (!this.recomedation.includes(index)) {
+      if (!this.recomedation.includes(index) && index !== -1 ) {
         this.recomedation.push(index)
       }
 
     })
 
+    if(index !== -1) {
     this.generateWhoToFollow()
+    }
 
 
   }
@@ -72,41 +75,49 @@ class User {
       li.appendChild(div)
       div.appendChild(p)
       li.appendChild(button)
-      button.addEventListener('click' ,() => people.addToDb(people.unfolowedPeople[index].id))
+      button.addEventListener('click' ,(e) => people.addToDb(e, people.unfolowedPeople[index].id))
 
     })
   }
 
   moreRecomedation() {
 
-
     let random = this.random()
     let flag = true
 
-
     this.recomedation.forEach(prop => {
       if (prop === random) {
-
-        flag = false
-
+        flag = !flag
       }
     })
 
-    if(!flag) {
+    if (this.recomedation.length === people.unfolowedPeople.length ) {
 
-      this.moreRecomedation()
+      alert('no-data')
 
-    }else {
+    }
+    else {
 
-      this.recomedation.push(random)
-      this.generateWhoToFollow()
-    } }
+      if(!flag) {
+
+        this.moreRecomedation()
+  
+      }
+      else {
+  
+        this.recomedation.push(random)
+        this.generateWhoToFollow()
+      
+
+    }
+
+} }
 
 
 
   random() {
 
-    const random = Math.floor(Math.random() * people.unfolowedPeople.length)
+    const random = Math.floor(Math.random() * (people.unfolowedPeople.length))
 
     return random
 
