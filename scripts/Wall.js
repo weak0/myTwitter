@@ -10,6 +10,7 @@ import {
     HTMLElements
 } from '../main.js'
 import { user } from "./User.js";
+import { layer } from "./Layer.js";
 
 
 
@@ -20,7 +21,7 @@ class Wall {
 
 
     id = db.length - 1
-    sortedByDate = false
+    sortedByDate = true
 
 
 
@@ -38,6 +39,15 @@ class Wall {
         HTMLElements.sortElementsBtn.addEventListener('click', () => this.sortElements())
         this.sortElements();
 
+
+    }
+
+    refresch() {
+
+        layer.changeLayer(HTMLElements.mainElement)
+        this.sortedByDate = true
+        this.sortElements();
+        window.scrollTo(0 , 0)
 
     }
 
@@ -196,16 +206,16 @@ class Wall {
 
     sortElements() {
 
-        if (this.sortedByDate) {
+        if (!this.sortedByDate) {
 
-            this.sortedByDate = false;
+            this.sortedByDate = !this.sortedByDate;
             db.sort((a, b) => {
                 return (b.hearts + b.coments) - (a.hearts + a.coments)
             })
 
-        } else if (!this.sortedByDate) {
+        } else if (this.sortedByDate) {
 
-            this.sortedByDate = true;
+            this.sortedByDate = !this.sortedByDate;
             db.sort((a, b) => {
                 return b.date - a.date
             })
@@ -280,6 +290,8 @@ class Wall {
        this.loadWall(categoryPosts)
 
     }
+
+
 
 
 }

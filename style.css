@@ -5,6 +5,12 @@
 
 }
 
+::-webkit-scrollbar {
+
+    display: none;
+
+}
+
 * {
 
     padding: 0;
@@ -27,6 +33,7 @@ body {
 
     max-width: 1300px;
     display: flex;
+    min-width: 1095px;
 
 
 }
@@ -120,14 +127,17 @@ body {
 
 
 
-.wall {
+.wall, .notification, .messages, .user {
 
-    min-width: 600px;
+    min-width: 650px;
+    min-height: 100vh;
     width: 60%;
     border-left: 1px solid rgba(151, 151, 151, 0.5);
     border-right: 1px solid rgba(151, 151, 151, 0.5);
-    margin-left: 20px;
+    border-bottom: 1px solid rgba(151, 151, 151, 0.5);
 
+    margin-left: 20px;
+    display: none;
 
 }
 
@@ -206,6 +216,7 @@ body {
     font-size: 18px;
     height: 100px;
     border: 1px solid black;
+    resize: none;
 }
 
 .add-post-right textarea:focus {
@@ -369,12 +380,16 @@ input[type='file']{
 
 .rightbar {
 
+    display: block;
+    margin-left: 20px;
     max-width: 400px;
-    height: 100vh;
-    display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+ 
+
+
 
 }
 
@@ -396,6 +411,8 @@ input[type='file']{
 .search--input:focus  {
 
     outline: none;
+    border-color: #1D9BF0;
+    color: #1D9BF0;
  
 }
 
@@ -428,6 +445,8 @@ input[type='file']{
     width: 340px;
     border-radius: 15px;
     color: rgb(216, 215, 215);
+    padding: 1px 0;
+
 }
 
 .trends ul, .follow-recomendation ul {
@@ -449,8 +468,8 @@ input[type='file']{
 
     margin: 15px 0;
     padding: 5px 20px;
-    position: relative;
     cursor: pointer;
+
 
 }
 
@@ -497,6 +516,7 @@ input[type='file']{
 .trends .showmore, .follow-recomendation .showmore {
 
     display: block;
+    top: 0;
     color: #1D9BF0;
     font-size: 14px;
     margin-left: 20px;
@@ -518,7 +538,8 @@ input[type='file']{
 .follow-recomendation div {
 
     flex-grow: 1;
-    position: relative;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -534,11 +555,9 @@ input[type='file']{
 .follow-recomendation p {
 
    
-display: inline-block;    
-position: absolute;
-top:50%;
-transform: translateY(-50%);
-left: 30%
+display: inline-block;
+margin-left: 30px;  
+
 
 
 
@@ -581,6 +600,47 @@ color:red;
 
     background-color: var(--primary-color);
     color: white;
+
+}
+
+
+
+
+
+.modal-add-post , .modal-user-settings {
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(7, 25, 41, 0.8);
+    top:0;
+    left: 0;
+    display: none;
+    justify-content: center;
+
+}
+
+.modal-add-post .add-post, .modal-user-settings .user-settings {
+
+    width: 700px;
+    height: fit-content;
+    margin-top: 200px;
+    background-color: black;
+    padding: 30px 0px 30px 0;
+    border-radius: 25px;
+    z-index: 1;
+    border: 2px solid var(--primary-color);
+
+}
+.modal-add-post.active , .modal-user-settings.active {
+
+    display: flex;
+
+}
+
+.wall.active, .user.active, .notification.active , .messages.active {
+
+    display: block;
 
 }
 

@@ -18,21 +18,18 @@
         <nav class="menu">
             <ul>
                 <li class="twitter-icon"> <i class="fa-brands fa-twitter"></i> </li>
-                <li><i class="fa-solid fa-house"></i></li>
-                <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                <li><i class="fa-solid fa-bell"></i></li>
-                <li><i class="fa-regular fa-envelope"></i></li>
-                <li><i class="fa-solid fa-bookmark"></i></li>
-                <li><i class="fa-solid fa-table-list"></i></li>
-                <li><i class="fa-solid fa-user"></i></li>
-                <li><i class="fa-solid fa-comment-dots"></i></li>
-                <li class="new-post"><i class="fa-regular fa-pen-to-square"></i></li>
+                <li class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></li>
+                <li class="notification-icon"><i class="fa-solid fa-bell"></i></li>
+                <li class="message-icon"><i class="fa-regular fa-envelope"></i></li>
+                <li class="user-icon"><i class="fa-solid fa-user"></i></li>
+                <li class="newPost-icon new-post "><i class="fa-regular fa-pen-to-square"></i></li>
             </ul>
-            <img src = 'https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg' alt= 'profile-picture-StillWeak' class="profile">
+            <img src = 'https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg' alt= 'profile-picture-StillWeak' class="profile settings-icon">
 
 
         </nav>
-        <main class="wall">
+
+        <main class="wall active">
 
             <div class="top-bar">
                 <h2>Home</h2> <i class="fa-solid fa-sort"></i>
@@ -73,6 +70,79 @@
             </div>
 
         </main>
+        
+        <main class="notification">
+
+            <div class="top-bar">
+                <h2>Notifcation</h2>
+            </div>
+            <div class="notification-place" data-notification>
+            </div>
+
+        </main>
+        <main class="user">
+
+            <div class="top-bar">
+                <h2>User Settings</h2>
+            </div>
+            <div class="notification-place" data-notification>
+            </div>
+
+        </main>
+        <main class="messages">
+
+            <div class="top-bar">
+                <h2>Messages</h2>
+            </div>
+            <div class="notification-place" data-notification>
+            </div>
+
+        </main>
+
+        <div class="modal-add-post">
+            <div class="add-post">
+                <div class="add-post-left"> <img src = 'https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg' alt= 'profile-picture-StillWeak' class="add-post-profile">
+                </div>
+                <div class="add-post-right">
+                    <select id="add-post-select" class="add-post-select">
+                        <option value="All">Everyone</option>
+                        <option value="Circle">Group</option>
+                    </select>
+                    <textarea name="add-post-textarea" id="text-area" placeholder="ale mam dzisiaj esse"></textarea>
+
+                    <select id="add-post-select-repley" class="add-post-select-repley">
+                        <option value="All">Everyone can repley</option>
+                        <option value="Folowers">People you follow</option>
+                        <option value="Mention">Only people you mention</option>
+                    </select>
+                    <div class="bot-bar">
+                        <div class="add-post-media">
+                            <label for="input-file">
+                                <i class="fa-solid fa-file"></i>
+                                <input type="file" id="input-file">
+                            </label>
+                            <i class="fa-solid fa-bars-progress"></i>
+                            <i class="fa-solid fa-face-smile"></i>
+                        </div>
+                        <div>
+                            <span> <span data-current-letter>0</span>/<span data-limit-letter>250</span> </span>
+                            <button data-tweet>Tweet</button>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+        </div>
+        <div class="modal-user-settings active">
+            <div class="user-settings">
+                <h2>Settings</h2>
+                <div class="settings-img"></div>
+                <label for="setting-change-image"></label>
+                <input type="file" id="settings-change-image">
+                <div class="settings-nick"></div>
+            </div>
+        </div>
+
         <aside class="rightbar">
             <div class="search"> <i class="fa-solid fa-magnifying-glass"></i> <input type="text" class="search--input"
                     placeholder="Search myTwitter"></div>
