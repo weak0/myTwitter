@@ -17,7 +17,7 @@ What have i learned:
 Work with input type = file,
 sort () function,
 Date () object,
-I improve my skills thanks to the Obiect-oriented programming,
+I improve my skills with Obiect-oriented programming,
 
 What needs to be corrected (imo):
 
