@@ -291,6 +291,56 @@ class Wall {
 
     }
 
+    loadProfileWall() {
+
+        HTMLElements.profileWall.textContent = ""
+
+        db.forEach(obj => {
+
+            if(obj.authorID === 99 ){
+                
+                
+            const author = people.findPerson(obj.authorID)
+            const postDiv = document.createElement('div')
+            postDiv.classList.add('post')
+            postDiv.id = obj.id
+            const postLeft = document.createElement('div')
+            postLeft.classList.add('post-left')
+            postLeft.innerHTML = `<img src = ${author.img} alt= 'profile-picture-${author.nick}'>`
+            const postRight = document.createElement('div')
+            postRight.classList.add('post-right')
+
+
+
+            postRight.innerHTML =
+                `<div class="post-description">${author.nick}
+                    <span class= "time"> ${this.timeConfiguration(obj.date)} </span>
+                </div>
+                <div class="post-text">${obj.text}</div>
+
+                ${obj.media ?  `<div class="post-media"> <img src=${ obj.media} alt=""></div>` : ""}
+               
+                <div class="post-actions">
+                    <div ><i class="fa-solid fa-comment"></i> ${obj.coments}</div>
+                    <div ><i class="fa-solid fa-retweet"></i></div>
+
+                    <div data-like><i class="fa-solid fa-heart ${obj.liked ? 'red': ''}"></i> ${obj.hearts}</div>
+
+                    <div ><i class="fa-solid fa-share"></i></div>
+                </div>`
+
+
+            HTMLElements.profileWall.appendChild(postDiv);
+            postDiv.appendChild(postLeft);
+            postDiv.appendChild(postRight);
+            postDiv.querySelector('[data-like]').addEventListener('click', (e) => this.likePost(e));
+                
+            }
+
+        })
+
+    }
+
 
 
 

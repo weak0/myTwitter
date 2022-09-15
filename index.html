@@ -24,7 +24,8 @@
                 <li class="user-icon"><i class="fa-solid fa-user"></i></li>
                 <li class="newPost-icon new-post "><i class="fa-regular fa-pen-to-square"></i></li>
             </ul>
-            <img src = 'https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg' alt= 'profile-picture-StillWeak' class="profile settings-icon">
+            <img src='https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg'
+                alt='profile-picture-StillWeak' class="profile settings-icon">
 
 
         </nav>
@@ -34,8 +35,11 @@
             <div class="top-bar">
                 <h2>Home</h2> <i class="fa-solid fa-sort"></i>
             </div>
+            <div class="add-post-container">
             <div class="add-post">
-                <div class="add-post-left"> <img src = 'https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg' alt= 'profile-picture-StillWeak' class="add-post-profile">
+                <div class="add-post-left"> <img
+                        src='https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg'
+                        alt='profile-picture-StillWeak' class="add-post-profile">
                 </div>
                 <div class="add-post-right">
                     <select id="add-post-select" class="add-post-select">
@@ -66,80 +70,83 @@
 
                 </div>
             </div>
+        </div>
             <div class="post-place" data-wall>
             </div>
 
         </main>
-        
+
         <main class="notification">
 
             <div class="top-bar">
                 <h2>Notifcation</h2>
             </div>
             <div class="notification-place" data-notification>
+                <div class="all-notification">All</div>
+                <ul>
+                    <li><i class="fa-solid fa-heart"></i> <span>Magnus Carlsen liked your post</span> </li>
+                    <li><i class="fa-solid fa-comment"></i></i> <span>Marcin Najman coment your post</span> </li>
+                </ul>
             </div>
 
         </main>
         <main class="user">
 
             <div class="top-bar">
-                <h2>User Settings</h2>
+                <h2>Profile</h2>
             </div>
-            <div class="notification-place" data-notification>
+            <div class="background-profile-image"> <img src="https://pbs.twimg.com/profile_banners/1308827207016558592/1642096558/1500x500" alt="background-profile-image"> </div>
+            <div class="profile-profile-image"> <img src="https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg" class="profile-profile-image" alt=""></div>
+            <div class="content-profile">
+                <div class="nick-profile-text">Still Weak</div>
+                <div class="name-profile-text">@stillweak</div>
+                <div class="description-profile-text">new media sympathizer</div>
+                <div class="about-profile">
+                    <div><i class="fa-solid fa-location-dot"></i> Silesia Poland </div>
+                    <div><i class="fa-solid fa-cake-candles"></i> 29.10.1998 </div>
+                    <div><i class="fa-solid fa-calendar-days"></i> Joned May 2017 </div>
+                </div>
+                <div class="numbers-profile">
+                    <span class="follow">250 </span><span>Folow</span>
+                    <span class="followers">10 </span><span>Folowers</span>
+                </div>
             </div>
-
+            <div class="tweets-profile">Tweets</div>
+            <div class="wall-profile">
+            </div>
+            
         </main>
         <main class="messages">
-
             <div class="top-bar">
                 <h2>Messages</h2>
             </div>
-            <div class="notification-place" data-notification>
-            </div>
+            <ul>
+                <li> <div> <img src="https://pbs.twimg.com/profile_images/1532384766405877761/SbD9Zzy3_400x400.jpg" alt="">  <span> Marcin Najman</span> </div> <p>zjadłem juz 4kg chyba umieram</p></li>
+                <li> <div> <img src="https://pbs.twimg.com/profile_images/1389314863843971076/vu1TCRV6_400x400.jpg" alt="">  <span> Tomek Jaskółka</span> </div> <p>Kon na e5</p></li>
+            </ul>
+           
 
         </main>
 
         <div class="modal-add-post">
-            <div class="add-post">
-                <div class="add-post-left"> <img src = 'https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg' alt= 'profile-picture-StillWeak' class="add-post-profile">
-                </div>
-                <div class="add-post-right">
-                    <select id="add-post-select" class="add-post-select">
-                        <option value="All">Everyone</option>
-                        <option value="Circle">Group</option>
-                    </select>
-                    <textarea name="add-post-textarea" id="text-area" placeholder="ale mam dzisiaj esse"></textarea>
-
-                    <select id="add-post-select-repley" class="add-post-select-repley">
-                        <option value="All">Everyone can repley</option>
-                        <option value="Folowers">People you follow</option>
-                        <option value="Mention">Only people you mention</option>
-                    </select>
-                    <div class="bot-bar">
-                        <div class="add-post-media">
-                            <label for="input-file">
-                                <i class="fa-solid fa-file"></i>
-                                <input type="file" id="input-file">
-                            </label>
-                            <i class="fa-solid fa-bars-progress"></i>
-                            <i class="fa-solid fa-face-smile"></i>
-                        </div>
-                        <div>
-                            <span> <span data-current-letter>0</span>/<span data-limit-letter>250</span> </span>
-                            <button data-tweet>Tweet</button>
-                        </div>
-                    </div>
-
-                </div>
         </div>
-        </div>
-        <div class="modal-user-settings active">
+        <div class="modal-user-settings">
             <div class="user-settings">
                 <h2>Settings</h2>
-                <div class="settings-img"></div>
-                <label for="setting-change-image"></label>
-                <input type="file" id="settings-change-image">
-                <div class="settings-nick"></div>
+                <div class="settings-img">
+                    <div class="settings-profile-picture"> 
+                    </div>
+                    <label for="settings-change-image">
+                        <div class="upload-file">Upload File</div>
+                        <input type="file" id="settings-change-image">
+                    </label>
+                    <button>Zmień</button>
+                </div>
+                <div class="settings-nick">
+                    <div class="settings-nick-load"></div>
+                    <input type="text" id="settings-change-nick" placeholder="Nowy Nick">
+                    <button>Zmień</button>
+                </div>
             </div>
         </div>
 

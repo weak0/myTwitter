@@ -1,8 +1,18 @@
-import {wall} from './scripts/Wall.js'
-import {EmojiPicker} from './scripts/EmojiPicker.js'
-import { trending } from './scripts/Trending.js'
-import { user } from './scripts/User.js'
-import { layer } from './scripts/Layer.js'
+import {
+    wall
+} from './scripts/Wall.js'
+import {
+    EmojiPicker
+} from './scripts/EmojiPicker.js'
+import {
+    trending
+} from './scripts/Trending.js'
+import {
+    user
+} from './scripts/User.js'
+import {
+    layer
+} from './scripts/Layer.js'
 
 
 export const HTMLElements = {
@@ -11,9 +21,27 @@ export const HTMLElements = {
     notificationElement: document.querySelector('.notification'),
     messageElement: document.querySelector('.messages'),
     userElement: document.querySelector('.user'),
+    settingsElement: document.querySelector('.modal-user-settings'),
 
-    modalAddPost:document.querySelector('.modal-add-post'),
-    modalAddPostInput:document.querySelector('.modal-add-post.add-post'),
+    profileWall: document.querySelector('.wall-profile'),
+
+    addPost: document.querySelector('.add-post'),
+    modalAddPost: document.querySelector('.modal-add-post'),
+    containterAddPost:document.querySelector('.add-post-container'),
+
+    settingsProfilePicture:document.querySelector('.settings-profile-picture'),
+    settingsImageBtn:document.querySelector('.settings-img button'),
+    setiingsInputFile:document.querySelector('#settings-change-image'),
+
+    settingsProfileNick:document.querySelector('.settings-nick-load'),
+    settingsInputText:document.querySelector('#settings-change-nick'),
+    settingsNickBtn:document.querySelector('.settings-nick button'),
+
+    profileSettingsIcon:document.querySelector('.profile.settings-icon'),
+    addPostProfile:document.querySelector('.add-post-profile'),
+    profileProfileImage:document.querySelector('img.profile-profile-image'), 
+    nickProfileText:document.querySelector('.nick-profile-text'),
+
 
     wall: document.querySelector('[data-wall]'),
     tweetButton: document.querySelector('[data-tweet]'),
@@ -23,24 +51,26 @@ export const HTMLElements = {
     inputFile: document.querySelector('#input-file'),
     like: document.querySelector('[data-like]'),
     sortElementsBtn: document.querySelector('.fa-sort'),
-    emotePickerSelector:'.fa-face-smile',
-    textAreaSelector:'#text-area',
-    trendsSection:document.querySelector('.trends ul'),
+    emotePickerSelector: '.fa-face-smile',
+    textAreaSelector: '#text-area',
+    trendsSection: document.querySelector('.trends ul'),
     showMoreTrendsBtn: document.querySelector('[data-more-trends]'),
     liTrendsSelector: '.li-trends',
     ulFollowrecomendation: document.querySelector('.follow-recomendation ul'),
     showmoreFollowrecomendation: document.querySelector('.follow-recomendation .showmore'),
 
-    menuTwitter:document.querySelector('.twitter-icon'),
-    menuSearch:document.querySelector('.search-icon'),
-    menuNotification:document.querySelector('.notification-icon'),
-    menuMessages:document.querySelector('.message-icon'),
-    menuUser:document.querySelector('.user-icon'),
-    menuAddPost:document.querySelector('.newPost-icon'),
-    menuSettings:document.querySelector('.settings-icon'),
+    menuTwitter: document.querySelector('.twitter-icon'),
+    menuSearch: document.querySelector('.search-icon'),
+    menuNotification: document.querySelector('.notification-icon'),
+    menuMessages: document.querySelector('.message-icon'),
+    menuUser: document.querySelector('.user-icon'),
+    menuAddPost: document.querySelector('.newPost-icon'),
+    menuSettings: document.querySelector('.settings-icon'),
 
-    searchInput:document.querySelector('.search--input'),
-    searchDiv:document.querySelector('.rightbar .search')
+    searchInput: document.querySelector('.search--input'),
+    searchDiv: document.querySelector('.rightbar .search')
+
+
 
 }
 
@@ -50,13 +80,14 @@ export const HTMLElements = {
 class Main {
 
     emotes = new EmojiPicker(HTMLElements.emotePickerSelector, HTMLElements.textAreaSelector)
-    
+
 
     init() {
         wall.init();
         trending.init()
         user.getWhoToFollow()
-        HTMLElements.showmoreFollowrecomendation.addEventListener('click' , () => user.moreRecomedation())
+        user.init()
+        HTMLElements.showmoreFollowrecomendation.addEventListener('click', () => user.moreRecomedation())
         this.menuHandler();
         this.setCurrentLayer()
 
@@ -75,24 +106,40 @@ class Main {
             HTMLElements.searchInput.focus()
             HTMLElements.searchDiv.classList.add('active')
             window.addEventListener('click', (e) => {
-                if(e.target.closest('li') !== HTMLElements.menuSearch  && e.target.closest('div') !== HTMLElements.searchDiv ) {
-                HTMLElements.searchDiv.classList.remove('active')
+                if (e.target.closest('li') !== HTMLElements.menuSearch && e.target.closest('div') !== HTMLElements.searchDiv) {
+                    HTMLElements.searchDiv.classList.remove('active')
                 }
             })
         })
         HTMLElements.menuNotification.addEventListener('click', () => layer.changeLayer(HTMLElements.notificationElement))
         HTMLElements.menuMessages.addEventListener('click', () => layer.changeLayer(HTMLElements.messageElement))
-        HTMLElements.menuUser.addEventListener('click', () => layer.changeLayer(HTMLElements.userElement))
+        HTMLElements.menuUser.addEventListener('click', () =>  {
+            layer.changeLayer(HTMLElements.userElement)
+            wall.loadProfileWall();
+        })
         HTMLElements.menuAddPost.addEventListener('click', () => {
             HTMLElements.modalAddPost.classList.add('active')
-            window.addEventListener('click', (e) => {
-                if(e.target === HTMLElements.modalAddPost) {
+            HTMLElements.addPost.remove()
 
+            HTMLElements.modalAddPost.appendChild(HTMLElements.addPost)
+            window.addEventListener('click', (e) => {
+                if (e.target === HTMLElements.modalAddPost) {
                     HTMLElements.modalAddPost.classList.remove('active')
+                    HTMLElements.addPost.remove();
+                    HTMLElements.containterAddPost.appendChild(HTMLElements.addPost)
+
+                    
 
                 }
             })
-
+        })
+        HTMLElements.menuSettings.addEventListener('click', () => {
+            HTMLElements.settingsElement.classList.add('active')
+                window.addEventListener('click', (e) => {
+                    if (e.target === HTMLElements.settingsElement) {
+                        HTMLElements.settingsElement.classList.remove('active')
+                    }
+                })
         })
 
 
@@ -102,6 +149,6 @@ class Main {
 
 }
 
-const main = new Main (); 
+const main = new Main();
 
-window.addEventListener('DOMContentLoaded',  () =>  main.init());
+window.addEventListener('DOMContentLoaded', () => main.init());

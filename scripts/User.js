@@ -12,9 +12,19 @@ class User {
   userDb = {
     id: 99,
     name: 'Maciek Gorzela',
-    nick: 'Still Weeak',
+    nick: 'Still Weak',
     img: 'https://pbs.twimg.com/profile_images/1418904441449848832/j2AfREvZ_400x400.jpg',
     interested: ['chess', 'comedy']
+
+  }
+
+
+  init() {
+
+    HTMLElements.menuSettings.addEventListener('click', () => this.setProfileSettings())
+    HTMLElements.settingsImageBtn.addEventListener('click', () => this.changeImage())
+    HTMLElements.settingsNickBtn.addEventListener('click', () => this.changeNick())
+
 
   }
 
@@ -45,14 +55,14 @@ class User {
         }
       })
 
-      if (!this.recomedation.includes(index) && index !== -1 ) {
+      if (!this.recomedation.includes(index) && index !== -1) {
         this.recomedation.push(index)
       }
 
     })
 
-    if(index !== -1) {
-    this.generateWhoToFollow()
+    if (index !== -1) {
+      this.generateWhoToFollow()
     }
 
 
@@ -75,7 +85,7 @@ class User {
       li.appendChild(div)
       div.appendChild(p)
       li.appendChild(button)
-      button.addEventListener('click' ,(e) => people.addToDb(e, people.unfolowedPeople[index].id))
+      button.addEventListener('click', (e) => people.addToDb(e, people.unfolowedPeople[index].id))
 
     })
   }
@@ -91,27 +101,71 @@ class User {
       }
     })
 
-    if (this.recomedation.length === people.unfolowedPeople.length ) {
+    if (this.recomedation.length === people.unfolowedPeople.length) {
 
       alert('no-data')
 
-    }
-    else {
+    } else {
 
-      if(!flag) {
+      if (!flag) {
 
         this.moreRecomedation()
-  
-      }
-      else {
-  
+
+      } else {
+
         this.recomedation.push(random)
         this.generateWhoToFollow()
+
+
+      }
+
+    }
+  }
+
+
+  setProfileSettings() {
+
+    HTMLElements.settingsProfilePicture.innerHTML = `<img src=${this.userDb.img} alt=profile-picture-${this.userDb.name}>`
+    HTMLElements.profileProfileImage.setAttribute('src', this.userDb.img)
+    HTMLElements.profileSettingsIcon.setAttribute('src', this.userDb.img)
+    HTMLElements.addPostProfile.setAttribute('src', this.userDb.img)
+    HTMLElements.settingsProfileNick.textContent = this.userDb.nick
+    HTMLElements.nickProfileText.textContent = this.userDb.nick
+
+  }
+
+  changeImage() {
+
+
+
+    if (HTMLElements.setiingsInputFile.value !== "") {
+
+      console.log('object');
+      const reader = new FileReader()
+
+
+      reader.addEventListener(('load'), () => {
+        this.userDb.img = reader.result
+        this.setProfileSettings();
+      })
+
+      reader.readAsDataURL(HTMLElements.setiingsInputFile.files[0])
       
+
+    }}
+
+  changeNick() {
+
+    if (HTMLElements.settingsInputText !== "") {
+
+      this.userDb.nick = HTMLElements.settingsInputText.value
+      this.setProfileSettings()
 
     }
 
-} }
+  }
+
+
 
 
 
