@@ -21,4 +21,4 @@ I improve my skills with Obiect-oriented programming,
 
 What needs to be corrected (imo):
 
-I need to write clearer code, sort styles (files with categories), systematize selectors
+I need to write clearer code, start using SASS, systematize selectors eg with conevension like BEM
